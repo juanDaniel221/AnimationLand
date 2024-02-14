@@ -1,0 +1,450 @@
+:root {
+    --dark-brown: #7d4b22;
+    --orange: #654319;
+    --green: #095722;
+    --white: rgb(255, 255, 255);
+    --shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+        0 19px 38px rgba(0, 0, 0, 0.22);
+    --pink: pink;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    counter-reset: score;
+}
+
+.phone {
+    position: relative;
+    border: 8px black solid;
+    border-radius: 40px;
+    overflow: hidden;
+    height: 600px;
+    width: 300px;
+    background-color: #191919;
+    box-shadow: var(--shadow);
+}
+
+input[type=checkbox] {
+    appearance: none;
+    cursor: pointer;
+    height: 50px;
+    margin: 0;
+    position: relative;
+    top: 0;
+    width: 80px;
+    z-index: 2;
+}
+
+input[type=checkbox]:focus {
+    appearance: none;
+    outline: none;
+}
+
+input:checked {
+    counter-increment: score;
+}
+
+.score::after {
+    content: counter(score);
+}
+
+.title {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 45px 0 10px;
+}
+
+.score {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+.layer-1 {
+    position: absolute;
+    z-index: 1;
+    height: 450px;
+    width: 80px;
+    bottom: 0;
+    right: 60px;
+
+    animation-name: layer;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-1 input[type=checkbox] {
+    animation-name: bunny;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes layer {
+    0% {
+        bottom: 0;
+    }
+
+    25% {
+        bottom: -80px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes bunny {
+    0% {
+        top: 0;
+    }
+
+    25% {
+        top: 80px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.left-ear--outer {
+    background-color: var(--white);
+    border-radius: 90%;
+    top: 0;
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+}
+
+.left-ear--inner {
+    background-color: var(--pink);
+    border-radius: 80%;
+    width: 10px;
+    height: 50px;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+}
+
+.right-ear--outer {
+    background-color: var(--white);
+    border-radius: 90%;
+    width: 20px;
+    height: 50px;
+    top: 0;
+    position: absolute;
+    right: 10px;
+}
+
+.right-ear--inner {
+    background-color: var(--pink);
+    border-radius: 80%;
+    width: 10px;
+    height: 50px;
+    position: absolute;
+    right: 15px;
+    top: 8px;
+}
+
+.head {
+    background-color: var(--white);
+    border-radius: 50%;
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    top: 30px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+.head__eye {
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    top: 12px;
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {
+        height: 4px;
+    }
+
+    5% {
+        height: 1px;
+        transform: translate(0px, 2px);
+    }
+
+    10% {
+        height: 4px;
+        transform: translate(0px, 0px);
+    }
+}
+
+.head__eye--left {
+    left: 30px;
+}
+
+.head__eye--right {
+    right: 30px;
+}
+
+.layer-2 {
+    position: absolute;
+    z-index: 2;
+    height: 450px;
+    width: 80px;
+    bottom: 0;
+    left: 60px;
+
+    animation-name: layer;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-2 input[type=checkbox] {
+    animation-name: bunny;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-3 {
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 400px;
+    overflow: hidden;
+    background-color: var(--orange);
+    bottom: 0;
+    box-shadow: var(--shadow);
+}
+
+.top {
+    background-color: var(--green);
+    width: auto;
+    height: 30px;
+    top: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.zigzag {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 20px;
+    background-color: var(--dark-brown);
+    opacity: 1;
+    background-image: linear-gradient(135deg, var(--green) 25%, transparent 25%),
+        linear-gradient(225deg, var(--green)25%, transparent 25%),
+        linear-gradient(45deg, var(--orange) 25%, transparent 25%),
+        linear-gradient(315deg, var(--orange) 25%, var(--dark-brown) 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+.layer-4 {
+    position: absolute;
+    z-index: 4;
+    height: 350px;
+    width: 80px;
+    bottom: 0;
+    left: 60px;
+
+    animation-name: layer;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-4 input[type=checkbox] {
+    animation-name: bunny;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-5 {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    background-color: var(--orange);
+    bottom: 0;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.layer-6 {
+    position: absolute;
+    z-index: 6;
+    height: 250px;
+    width: 80px;
+    bottom: 0;
+    right: 30px;
+
+    animation-name: layer;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-6 input[type=checkbox] {
+    animation-name: bunny;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.layer-7 {
+    position: absolute;
+    z-index: 7;
+    right: 0;
+    width: 140px;
+    height: 200px;
+    background-color: var(--orange);
+    bottom: 0;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.layer-8 {
+    position: absolute;
+    z-index: 8;
+    width: 250px;
+    height: 120px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.circle--right {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--green);
+}
+
+.circle--center {
+    position: absolute;
+    width: 100px;
+    height: 140px;
+    bottom: 0;
+    right: 85px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--green);
+}
+
+.circle--left {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    bottom: 0;
+    left: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--green);
+}
+
+.layer-9 {
+    position: absolute;
+    z-index: 9;
+    width: 110px;
+    height: 90px;
+    left: 0;
+    bottom: 0;
+    border-bottom-left-radius: 30px;
+}
+
+.cloud-right {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--white);
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 50px;
+}
+
+.cloud-left {
+    position: absolute;
+    width: 60px;
+    height: 90px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--white);
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 50px;
+}
+
+.cloud-left--2 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--white);
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 50px;
+}
+
+.cloud-right--2 {
+    position: absolute;
+    width: 60px;
+    height: 90px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: var(--white);
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 50px;
+}
+
+.layer-10 {
+    position: absolute;
+    z-index: 10;
+    width: 110px;
+    height: 90px;
+    background-color: transparent;
+    right: 0;
+    bottom: 0;
+    border-bottom-right-radius: 30px;
+}
